@@ -1,6 +1,11 @@
+:root {
+    --main-font-size: 16px;
+    --main-font-family: Arial, sans-serif;
+}
+
 body {
-    font-size: 16px;
-    font-family: Arial, sans-serif;
+    font-size: var(--main-font-size);
+    font-family:var(--main-font-family);
 }
 
 h1
@@ -30,4 +35,13 @@ h5
 p
 {
     font-size: 1em;
+}
+
+.fakeimg {
+    height: 200px;
+    background: #aaa;
+}
+
+header, footer {
+    margin-bottom: 0 !important
 }
