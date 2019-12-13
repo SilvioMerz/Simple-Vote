@@ -1,41 +1,10 @@
 /*Think about using Bootstrap font size*/
 :root {
-    --main-font-size: 16px;
     --main-font-family: Arial, sans-serif;
 }
 
 body {
-    font-size: var(--main-font-size);
     font-family:var(--main-font-family);
-}
-
-h1
-{
-    font-size: 2.0em;
-}
-
-h2
-{
-    font-size: 1.8em;}
-
-h3
-{
-    font-size: 1.6em;
-}
-
-h4
-{
-    font-size: 1.4em;
-}
-
-h5
-{
-    font-size: 1.2em;
-}
-
-p
-{
-    font-size: 1em;
 }
 
 .fakeimg {
