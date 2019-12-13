@@ -1,0 +1,39 @@
+<div class="modal fade" id="renameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Rename Bulletpoint</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="bulletpoint-name" class="col-form-label">Bulletpoint name:</label>
+                        <textarea name="renameBulletpoint" class="form-control" id="bulletpoint-name"></textarea>
+                        <input type="hidden" name="bulletpointID" id="bulletpointID">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submitRename" class="btn btn-primary">Change Bulletpoint</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $('#renameModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var bulletpointname = button.data('bulletpointname'); // Extract info from data-* attributes
+        var bulletpointID = button.data('bulletpointid');
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this);
+        modal.find('.modal-body #bulletpoint-name').val(bulletpointname);
+        modal.find('.modal-body #bulletpointID').val(bulletpointID);
+    })
+</script>
+

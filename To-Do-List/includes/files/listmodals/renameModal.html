@@ -1,0 +1,39 @@
+<div class="modal fade" id="renameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Rename List</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="list-name" class="col-form-label">List name:</label>
+                        <input type="text" name="renameList" class="form-control" id="list-name">
+                        <input type="hidden" name="listID" id="listID">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submitRename" class="btn btn-primary">Change Name</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $('#renameModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var listname = button.data('listname'); // Extract info from data-* attributes
+        var listID = button.data('listid');
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this);
+        modal.find('.modal-body #list-name').val(listname);
+        modal.find('.modal-body #listID').val(listID);
+    })
+</script>
+
