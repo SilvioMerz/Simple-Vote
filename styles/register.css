@@ -1,0 +1,16 @@
+.sign {
+    text-align: center;
+}
+
+.center-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 50vh;
+}
+
+div input {
+    margin-bottom: 1em;
+}
