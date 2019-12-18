@@ -1,6 +1,5 @@
 <?php
-session_start();
-// Connect to the database
+
 include_once('includes/scripts/database.php');
 
 $errors = array();
@@ -49,8 +48,7 @@ if (isset($_POST['submit'])) {
         $password = sha1($password);
         $insertUser->execute();
         $insertUser->close();
-        $_SESSION['username'] = $username;
-        $_SESSION['success'] = "You are now logged in";
+        include_once('includes/scripts/createSession.php');
         header('location: index.php');
     }
 }
@@ -61,14 +59,12 @@ if (isset($_POST['submit'])) {
 <head>
     <?php include_once('includes/dependencies.html'); ?>
     <?php include_once('includes/head.html'); ?>
-    <link rel="stylesheet" type="text/css" href="../styles/register.css">
+    <link rel="stylesheet" type="text/css" href="../styles/forms.css">
 </head>
-<body style="height: unset;">
 
+<body>
 <div class="container">
-    <div>
-        <h1>Simple Vote</h1>
-    </div>
+    <h1><a href="index.php">Simple Vote</a></h1>
 
     <div class="sign">
         <h2>Sign up</h2>
@@ -91,15 +87,14 @@ if (isset($_POST['submit'])) {
                    value="<?php if (isset($email)) echo $email ?>">
 
             <input class="form-control w-50" type="password" name="password" placeholder="Password"
-                   value="<?php if (isset($password)) echo $password ?>" maxlength="32" minlength="6">
+                   value="<?php if (isset($password)) echo $password ?>" minlength="6" maxlength="32">
 
-            <input class="form-control w-50" type="password" name="repeatPassword" placeholder="Repeat Password"
-                   value="<?php if (isset($repeatedPassword)) echo $repeatedPassword ?>" maxlength="32"
+            <input class="form-control w-50" type="password" name="repeatPassword" placeholder="Repeat password"
+                   value="<?php if (isset($repeatedPassword)) echo $repeatedPassword ?>" minlength="6" maxlength="32">
 
-            <p>Do you already have an account? <a href="index.php">Sign in here</a></p>
+            <p>Do you already have an account? <a href="login.php">Sign in here</a></p>
 
             <button type="submit" name="submit" class="btn btn-sm btn-outline-primary">Sign up</button>
-
         </div>
     </form>
 </div>

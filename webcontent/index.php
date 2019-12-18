@@ -1,14 +1,17 @@
-<?php session_start();?>
+<?php
+session_start();
+include_once('includes/scripts/checkSession.php');
+$title = "Simple Vote";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <?php include_once('includes/dependencies.html'); ?>
     <?php include_once('includes/head.html'); ?>
     <link rel="stylesheet" type="text/css" href="../styles/index.css">
-    <script src="../scripts/index.js"></script>
 </head>
 <body>
-<?php include_once('includes/header.html'); ?>
+<?php include_once('includes/header.php'); ?>
 
 <?php include_once('includes/navbar.php'); ?>
 

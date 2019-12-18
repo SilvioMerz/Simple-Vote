@@ -1,3 +1,11 @@
+<?php
+if (isset($_GET['logout'])) {
+    session_unset();
+    session_destroy();
+    header('Location: ../webcontent/index.php');
+}
+?>
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -11,17 +19,21 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
             </li>
-            <?php if (!isset($_SESSION['success'])) : ?>
+            <?php if (!isset($_SESSION['USER']['SUCCESS'])) : ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="register.php">Register</a>
+                    <a class="nav-link" href="../webcontent/register.php">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../webcontent/login.php">Login</a>
                 </li>
             <?php endif ?>
-            <?php if (isset($_SESSION['success'])) : ?>
+
+            <?php if (isset($_SESSION['USER']['SUCCESS'])) : ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="../scripts/logout.php">Log out</a>
-                </li>>
+                    <a class="nav-link" href="../webcontent/index.php?logout='1'">logout</a>
+                </li>
                 <li class="nav-item active">
-                    <a class="nav-link">Logged in as: <?= $_SESSION['username']?></a>
+                    <a class="nav-link">Logged in as: <?= $_SESSION['USER']['USERNAME'] ?></a>
                 </li>
             <?php endif ?>
         </ul>
