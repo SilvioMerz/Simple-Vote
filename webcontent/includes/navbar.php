@@ -24,7 +24,7 @@ if (isset($_GET['logout'])) {
 
             <?php if (isset($_SESSION['USER']['SUCCESS'])) : ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="../webcontent/createQuestion.php">Create survey</a>
+                    <a class="nav-link" href="../webcontent/createSurvey.php">Create survey</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../webcontent/index.php?logout='1'">logout</a>
