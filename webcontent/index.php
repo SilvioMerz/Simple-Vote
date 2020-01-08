@@ -2,6 +2,16 @@
 session_start();
 include_once('includes/scripts/checkSession.php');
 $title = "Simple Vote";
+
+include_once('includes/scripts/database.php');
+
+//TODO: rename variables and implement better
+$user_check_query = "SELECT * FROM surveys WHERE fkuser = 1";
+$result = mysqli_query($db, $user_check_query);
+$user = mysqli_fetch_assoc($result);
+
+$aaaa = $user['answers'];
+$split = explode(";", $aaaa)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +24,13 @@ $title = "Simple Vote";
 <?php include_once('includes/header.php'); ?>
 
 <?php include_once('includes/navbar.php'); ?>
+
+<!--TODO: Implement nice survey view with answers-->
+<?php if (isset($_SESSION['USER']['SUCCESS'])) : ?>
+    <?php foreach($split as $ans): ?>
+        <p><?php echo $ans; ?></p>
+    <?php endforeach; ?>
+<?php endif ?>
 
 <div class="container" style="margin-top:30px">
     <div class="row">

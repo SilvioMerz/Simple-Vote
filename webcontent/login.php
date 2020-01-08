@@ -2,7 +2,7 @@
 include_once('includes/scripts/database.php');
 
 $errors = array();
-$loginCredentials = $db->prepare("SELECT user_ID, email FROM users WHERE username = (?) AND password = (?)");
+$loginCredentials = $db->prepare("SELECT idusers, email FROM users WHERE username = (?) AND password = (?)");
 
 if (isset($_POST["submit"])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
@@ -22,6 +22,9 @@ if (isset($_POST["submit"])) {
         $loginCredentials->execute();
         $result = $loginCredentials->get_result();
         if (mysqli_num_rows($result) == 1) {
+            while ($row = $result->fetch_assoc()) {
+                $userId = $row['idusers'];
+            }
             include_once('includes/scripts/createSession.php');
             header('location: index.php');
         } else {
@@ -56,7 +59,6 @@ if (isset($_POST["submit"])) {
             <?php endforeach ?>
         </div>
     <?php endif ?>
-
 
     <form method="post" action="login.php">
         <div class="center-screen">

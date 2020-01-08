@@ -7,18 +7,12 @@ if (isset($_GET['logout'])) {
 ?>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="../webcontent/index.php">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
             <?php if (!isset($_SESSION['USER']['SUCCESS'])) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="../webcontent/register.php">Register</a>
@@ -29,6 +23,9 @@ if (isset($_GET['logout'])) {
             <?php endif ?>
 
             <?php if (isset($_SESSION['USER']['SUCCESS'])) : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="../webcontent/createQuestion.php">Create survey</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../webcontent/index.php?logout='1'">logout</a>
                 </li>

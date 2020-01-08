@@ -3,16 +3,15 @@
 include_once('includes/scripts/database.php');
 
 $errors = array();
-$insertUser = $db->prepare("INSERT INTO users (username, email, password, verificationkey) VALUES ((?), (?), (?), (?))");
+$insertUser = $db->prepare("INSERT INTO users (username, email, password) VALUES ((?), (?), (?))");
 
 if (isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $email = mysqli_real_escape_string($db, $_POST['email']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
     $repeatedPassword = mysqli_real_escape_string($db, $_POST['repeatPassword']);
-    $key = rand();
 
-    $insertUser->bind_param("sssi", $username, $email, $password, $key);
+    $insertUser->bind_param("sss", $username, $email, $password);
 
     if (isset($username) && $username == "") {
         array_push($errors, "Username is required");
@@ -29,6 +28,7 @@ if (isset($_POST['submit'])) {
     if ($password != $repeatedPassword) {
         array_push($errors, "The two passwords do not match");
     }
+
 
     $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
     $result = mysqli_query($db, $user_check_query);
@@ -48,6 +48,7 @@ if (isset($_POST['submit'])) {
         $password = sha1($password);
         $insertUser->execute();
         $insertUser->close();
+        $userId = $db->insert_id;
         include_once('includes/scripts/createSession.php');
         header('location: index.php');
     }
