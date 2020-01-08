@@ -5,13 +5,17 @@ $title = "Simple Vote";
 
 include_once('includes/scripts/database.php');
 
-//TODO: rename variables and implement better
-$user_check_query = "SELECT * FROM surveys WHERE fkuser = 1";
-$result = mysqli_query($db, $user_check_query);
-$user = mysqli_fetch_assoc($result);
+$surveys = [];
+$split = [];
+$getAllSurveysQuery = "SELECT * FROM surveys";
+$result = mysqli_query($db, $getAllSurveysQuery);
+while ($row = mysqli_fetch_assoc($result)) {
+    $surveys[] = $row;
+}
 
-$aaaa = $user['answers'];
-$split = explode(";", $aaaa)
+foreach ($surveys as $splitedAnswer) {
+    array_push($split, explode(";", $splitedAnswer['answers']));
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,9 +31,11 @@ $split = explode(";", $aaaa)
 
 <!--TODO: Implement nice survey view with answers-->
 <?php if (isset($_SESSION['USER']['SUCCESS'])) : ?>
-    <?php foreach($split as $ans): ?>
-        <p><?php echo $ans; ?></p>
-    <?php endforeach; ?>
+    <?php for ($i = 0; $i < count($surveys); $i++): ?>
+        <p><?php echo $surveys[$i]['title']; ?></p>
+        <p><?php echo $split[$i][0]; ?></p>
+        <p><?php echo $split[$i][1]; ?></p>
+    <?php endfor; ?>
 <?php endif ?>
 
 <div class="container" style="margin-top:30px">
