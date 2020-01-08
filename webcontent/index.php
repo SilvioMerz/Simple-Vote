@@ -7,14 +7,16 @@ include_once('includes/scripts/database.php');
 
 $surveys = [];
 $split = [];
-$getAllSurveysQuery = "SELECT * FROM surveys";
+$getAllSurveysQuery = "SELECT s.title, s.question, s.description, s.answers, u.username FROM `surveys` AS s INNER JOIN users AS u ON s.fkuser=u.idusers";
 $result = mysqli_query($db, $getAllSurveysQuery);
-while ($row = mysqli_fetch_assoc($result)) {
-    $surveys[] = $row;
-}
+if (isset($result)) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $surveys[] = $row;
+    }
 
-foreach ($surveys as $splitedAnswer) {
-    array_push($split, explode(";", $splitedAnswer['answers']));
+    foreach ($surveys as $splitedAnswer) {
+        array_push($split, explode(";", $splitedAnswer['answers']));
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -23,63 +25,34 @@ foreach ($surveys as $splitedAnswer) {
     <?php include_once('includes/dependencies.html'); ?>
     <?php include_once('includes/head.html'); ?>
     <link rel="stylesheet" type="text/css" href="../styles/index.css">
+    <script src="includes/scripts/participate.js"></script>
 </head>
 <body>
 <?php include_once('includes/header.php'); ?>
 
 <?php include_once('includes/navbar.php'); ?>
 
-<!--TODO: Implement nice survey view with answers-->
-<?php if (isset($_SESSION['USER']['SUCCESS'])) : ?>
-    <?php for ($i = 0; $i < count($surveys); $i++): ?>
-        <p><?php echo $surveys[$i]['title']; ?></p>
-        <p><?php echo $split[$i][0]; ?></p>
-        <p><?php echo $split[$i][1]; ?></p>
-    <?php endfor; ?>
-<?php endif ?>
-
 <div class="container" style="margin-top:30px">
     <div class="row">
-        <div class="col-sm-4">
-            <h2>Title</h2>
-            <h5>Lorem ipsum dolor sit amet.</h5>
-            <div class="fakeimg">Image</div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <h3>Some Links</h3>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-            <hr class="d-sm-none">
-        </div>
-        <div class="col-sm-8">
-            <h2>TITLE HEADING</h2>
-            <h5>Title description</h5>
-            <div class="fakeimg">Image</div>
-            <p>Some text..</p>
-            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco.</p>
-            <br>
-            <h2>TITLE HEADING</h2>
-            <h5>Title description</h5>
-            <div class="fakeimg">Image</div>
-            <p>Some text..</p>
-            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco.</p>
-        </div>
+        <?php for ($i = 0; $i < count($surveys); $i++): ?>
+            <div class="col-sm-4">
+                <div class="survey">
+                    <h3><?php echo $surveys[$i]['title']; ?></h3>
+                    <h5><?php echo $surveys[$i]['question']; ?></h5>
+                    <p><?php echo $surveys[$i]['description']; ?></p><br>
+
+                    <button class="participate">Participate</button>
+
+                    <div class="answers hide">
+                        <button><?php echo $split[$i][0]; ?></button>
+                        <button><?php echo $split[$i][1]; ?></button>
+                        <br><button class="back">back</button>
+                    </div>
+
+                    <p>Created by: <?php echo $surveys[$i]['username']; ?></p>
+                </div>
+            </div>
+        <?php endfor; ?>
     </div>
 </div>
 

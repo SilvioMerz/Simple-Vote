@@ -15,3 +15,21 @@ body {
 header, footer {
     margin-bottom: 0 !important
 }
+
+.hide {
+    display: none;
+}
+
+.survey {
+    max-width: 22em;
+    max-height: 13em;
+    word-wrap: break-word;
+    overflow: auto;
+    border: 1px solid black;
+    padding: 1em;
+    margin-bottom: 2em;
+}
+
+.survey p {
+    margin-bottom: 0;
+}

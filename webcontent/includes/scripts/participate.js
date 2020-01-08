@@ -1,0 +1,10 @@
+$(document).ready(function(){
+    $('.participate').click(function(){
+        $(".answers").removeClass("hide");
+        $(".participate").addClass("hide");
+    });
+    $('.back').click(function(){
+        $(".answers").addClass("hide");
+        $(".participate").removeClass("hide");
+    });
+});
