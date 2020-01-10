@@ -5,21 +5,17 @@ $title = "Create survey";
 
 include_once('includes/scripts/database.php');
 $errors = array();
-$insertSurvey = $db->prepare("INSERT INTO surveys (title, question, description, answers, fkuser) VALUES (?, ?, ?, ?, ?)");
+$insertSurvey = $db->prepare("INSERT INTO surveys (question, description, answers, fkuser) VALUES (?, ?, ?, ?)");
 
 if (isset($_POST["submitCreateSurvey"])) {
-    $surveyTitle = mysqli_real_escape_string($db, $_POST['surveyTitle']);
     $question = mysqli_real_escape_string($db, $_POST['question']);
     $description = mysqli_real_escape_string($db, $_POST['description']);
     $answer1 = mysqli_real_escape_string($db, $_POST['answer1']);
     $answer2 = mysqli_real_escape_string($db, $_POST['answer2']);
     $answers = $answer1 . ';' . $answer2;
 
-    $insertSurvey->bind_param("ssssi", $surveyTitle, $question, $description, $answers, $_SESSION['USER']['USERID']);
+    $insertSurvey->bind_param("sssi", $question, $description, $answers, $_SESSION['USER']['USERID']);
 
-    if (isset($surveyTitle) && $surveyTitle == "") {
-        array_push($errors, "Title is required");
-    }
     if (isset($question) && $question == "") {
         array_push($errors, "Question is required");
     }
@@ -66,11 +62,6 @@ if (isset($_POST["submitCreateSurvey"])) {
         </div>
         <form method="post" action="createSurvey.php">
             <div class="modal-body">
-                <div class="form-group">
-                    <label class="col-form-label">Title:</label>
-                    <input type="text" name="surveyTitle" class="form-control">
-                </div>
-
                 <div class="form-group">
                     <label class="col-form-label">Question:</label>
                     <input type="text" name="question" class="form-control">
