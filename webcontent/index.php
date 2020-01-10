@@ -7,7 +7,7 @@ include_once('includes/scripts/database.php');
 
 $surveys = [];
 $split = [];
-$getAllSurveysQuery = "SELECT s.title, s.question, s.description, s.answers, u.username FROM `surveys` AS s INNER JOIN users AS u ON s.fkuser=u.idusers";
+$getAllSurveysQuery = "SELECT s.question, s.description, s.answers, u.username FROM `surveys` AS s INNER JOIN users AS u ON s.fkuser=u.idusers";
 $result = mysqli_query($db, $getAllSurveysQuery);
 if (isset($result)) {
     while ($row = mysqli_fetch_assoc($result)) {
@@ -37,8 +37,7 @@ if (isset($result)) {
         <?php for ($i = 0; $i < count($surveys); $i++): ?>
             <div class="col-sm-4">
                 <div class="survey">
-                    <h3><?php echo $surveys[$i]['title']; ?></h3>
-                    <h5><?php echo $surveys[$i]['question']; ?></h5>
+                    <h3><?php echo $surveys[$i]['question']; ?></h3>
                     <p><?php echo $surveys[$i]['description']; ?></p><br>
 
                     <button class="participate">Participate</button>

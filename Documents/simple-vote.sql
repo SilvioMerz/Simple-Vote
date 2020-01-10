@@ -39,7 +39,6 @@ CREATE TABLE IF NOT EXISTS `simple-vote`.`users`
 CREATE TABLE IF NOT EXISTS `simple-vote`.`surveys`
 (
     `idsurveys`   INT          NOT NULL AUTO_INCREMENT,
-    `title`       VARCHAR(255) NOT NULL,
     `question`       VARCHAR(255) NOT NULL,
     `description` VARCHAR(255) NULL,
     `answers`     VARCHAR(255) NOT NULL,
