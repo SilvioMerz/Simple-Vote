@@ -19,6 +19,7 @@ if (isset($result)) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +55,6 @@ if (isset($result)) {
         <?php endfor; ?>
     </div>
 </div>
-
 <?php include_once('includes/footer.html'); ?>
 </body>
 </html>

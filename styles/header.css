@@ -1,0 +1,20 @@
+h1 {
+    font-family: "Arial Black";
+    color: #1a82ae;
+    padding-left: 180px;
+}
+
+p {
+    text-align: left;
+}
+
+img {
+    alignment: left;
+    padding-top: 40px;
+}
+
+.jumbotron {
+    background-color: white;
+}
+
+header {margin-bottom: 0 !important}
