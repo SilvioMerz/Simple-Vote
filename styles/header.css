@@ -10,11 +10,13 @@ p {
 
 img {
     alignment: left;
-    padding-top: 40px;
+    padding-top: 50px;
 }
 
 .jumbotron {
     background-color: white;
+    padding-top: 5px;
+    padding-bottom: 5px
 }
 
 header {margin-bottom: 0 !important}

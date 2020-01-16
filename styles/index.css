@@ -20,16 +20,34 @@ header, footer {
     display: none;
 }
 
-.survey {
+div.survey {
     max-width: 22em;
     max-height: 13em;
     word-wrap: break-word;
     overflow: auto;
-    border: 1px solid black;
+    border: 3px solid black;
     padding: 1em;
     margin-bottom: 2em;
+    background-color: azure;
 }
 
 .survey p {
     margin-bottom: 0;
+}
+
+div.row {
+    padding-top: 50px;
+    padding-bottom: 200px;
+}
+
+button.participate {
+    background-color: #c6c8ca;
+}
+
+h3 {
+    font-family: HP Simplified;
+}
+
+p {
+    padding-top: 10px;
 }

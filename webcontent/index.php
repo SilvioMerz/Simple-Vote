@@ -41,7 +41,7 @@ if (isset($result)) {
                     <h3><?php echo $surveys[$i]['question']; ?></h3>
                     <p><?php echo $surveys[$i]['description']; ?></p><br>
 
-                    <button class="participate">Participate</button>
+                    <button class="participate"><strong>Participate</strong></button>
 
                     <div class="answers hide">
                         <button><?php echo $split[$i][0]; ?></button>
