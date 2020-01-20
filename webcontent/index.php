@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once('includes/scripts/checkSession.php');
+
 $title = "Simple Vote";
 
 include_once('includes/scripts/database.php');
@@ -41,12 +42,12 @@ if (isset($result)) {
                     <h3><?php echo $surveys[$i]['question']; ?></h3>
                     <p><?php echo $surveys[$i]['description']; ?></p><br>
 
-                    <button class="participate"><strong>Participate</strong></button>
+                    <button onclick="showAnswers(<?php echo $i ?>)" class="participate<?php echo $i ?>"><strong>Participate</strong></button>
 
-                    <div class="answers hide">
-                        <button><?php echo $split[$i][0]; ?></button>
-                        <button><?php echo $split[$i][1]; ?></button>
-                        <br><button class="back">back</button>
+                    <div class="answers<?php echo $i ?> hide">
+                        <button onclick="vote(<?php echo $i + 1 ?>, 1)"><?php echo $split[$i][0]; ?></button>
+                        <button onclick="vote(<?php echo $i + 1 ?>, 2)"><?php echo $split[$i][1]; ?></button>
+                        <br><button onclick="back(<?php echo $i ?>)" class="back<?php echo $i ?>">back</button>
                     </div>
 
                     <p>Created by: <?php echo $surveys[$i]['username']; ?></p>
