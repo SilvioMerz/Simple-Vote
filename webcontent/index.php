@@ -45,8 +45,8 @@ if (isset($result)) {
                     <button onclick="showAnswers(<?php echo $i ?>)" class="participate<?php echo $i ?>"><strong>Participate</strong></button>
 
                     <div class="answers<?php echo $i ?> hide">
-                        <button onclick="vote(<?php echo $i + 1 ?>, 1)"><?php echo $split[$i][0]; ?></button>
-                        <button onclick="vote(<?php echo $i + 1 ?>, 2)"><?php echo $split[$i][1]; ?></button>
+                        <button onclick="vote(<?php echo $i + 1 ?>, 1, '<?php echo $surveys[$i]['question'] ?>')"><?php echo $split[$i][0]; ?></button>
+                        <button onclick="vote(<?php echo $i + 1 ?>, 2, '<?php echo $surveys[$i]['question'] ?>')"><?php echo $split[$i][1]; ?></button>
                         <br><button onclick="back(<?php echo $i ?>)" class="back<?php echo $i ?>">back</button>
                     </div>
 
@@ -56,6 +56,7 @@ if (isset($result)) {
         <?php endfor; ?>
     </div>
 </div>
+<div id="toastr"></div>
 <?php include_once('includes/footer.html'); ?>
 </body>
 </html>
