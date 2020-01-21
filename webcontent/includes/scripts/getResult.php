@@ -25,19 +25,23 @@ $width2 = 100 * round( $tempVotes['votesAnswer2'] / max(($tempVotes['votesAnswer
     .poll2 {
         width: <?=$width2?>%;
     }
+
+    #result-table {
+        margin-bottom: 1em;
+    }
 </style>
 
 <script>
 
 </script>
 
-<h2>Result:</h2>
-<table>
+<h4>Result:</h4>
+<table id="result-table">
     <tr>
         <td>Yes:</td>
         <td class="w-100">
             <div class="poll poll1">
-               <span><?php echo $width1 ?>%</span>
+               <span>&nbsp; <?php echo $width1 ?>%</span>
             </div>
         </td>
     </tr>
@@ -45,11 +49,10 @@ $width2 = 100 * round( $tempVotes['votesAnswer2'] / max(($tempVotes['votesAnswer
         <td>No:</td>
         <td>
             <div class="poll poll2">
-                <span><?php echo $width2 ?>%</span>
+                <span>&nbsp; <?php echo $width2 ?>%</span>
             </div>
         </td>
     </tr>
-    <tr>
-        <td><button onclick="closeResult(<?php echo $surveyId - 1?>, <?php echo $surveyId ?>)">Close</button></td>
-    </tr>
 </table>
+<button onclick="closeResult(<?php echo $surveyId - 1?>, <?php echo $surveyId ?>)">Close</button>
+<p><?php echo $tempVotes['votesAnswer1'] + $tempVotes['votesAnswer2'] ?> People have voted for this question</p>

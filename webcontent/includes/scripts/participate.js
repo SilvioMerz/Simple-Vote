@@ -20,7 +20,7 @@ function vote(surveyId, voteId, surveyName) {
     x.textContent = "You successfully voted for the question \"" + surveyName + "\"";
     x.className = "show";
 
-    $.post('includes/scripts/vote.php', data, function (response) {
+    $.post('includes/scripts/insertVote.php', data, function (response) {
         console.log("Response: " + response)
     });
 
@@ -49,7 +49,7 @@ function showResult(surveyIndex, surveyId) {
                 document.getElementById("survey" + surveyIndex).innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "includes/scripts/getResults.php?survey=" + surveyId, true);
+        xmlhttp.open("GET", "includes/scripts/getResult.php?survey=" + surveyId, true);
         xmlhttp.send();
     }
 }
