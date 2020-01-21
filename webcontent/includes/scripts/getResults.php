@@ -7,10 +7,8 @@ $getVotes = "SELECT votesAnswer1, votesAnswer2 FROM votes WHERE fksurveys = $sur
 $result = mysqli_query($db, $getVotes);
 $tempVotes = mysqli_fetch_assoc($result);
 
-$width1 = 100 * round($tempVotes['votesAnswer1'] / ($tempVotes['votesAnswer2'] + $tempVotes['votesAnswer1']), 2);
-$width2 = 100 * round($tempVotes['votesAnswer2'] / ($tempVotes['votesAnswer2'] + $tempVotes['votesAnswer1']), 2);
-
-
+$width1 = 100 * round($tempVotes['votesAnswer1'] / max(($tempVotes['votesAnswer2'] + $tempVotes['votesAnswer1']), 1), 2);
+$width2 = 100 * round( $tempVotes['votesAnswer2'] / max(($tempVotes['votesAnswer2'] + $tempVotes['votesAnswer1']), 1), 2);
 ?>
 
 <style>
@@ -18,12 +16,16 @@ $width2 = 100 * round($tempVotes['votesAnswer2'] / ($tempVotes['votesAnswer2'] +
         background-color: #1a82ae;
         height: 20px;
         width: <?=$width1?>%;
+        overflow: visible;
+        white-space: nowrap
     }
 
     .poll2 {
         background-color: #1a82ae;
         height: 20px;
         width: <?=$width2?>%;
+        overflow: visible;
+        white-space: nowrap;
     }
 </style>
 
