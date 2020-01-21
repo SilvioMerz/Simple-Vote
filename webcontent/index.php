@@ -48,7 +48,7 @@ if (isset($result)) {
                     <div class="answers<?php echo $i ?> hide">
                         <button onclick="vote(<?php echo $i + 1 ?>, 1, '<?php echo $surveys[$i]['question'] ?>')"><?php echo $split[$i][0]; ?></button>
                         <button onclick="vote(<?php echo $i + 1 ?>, 2, '<?php echo $surveys[$i]['question'] ?>')"><?php echo $split[$i][1]; ?></button>
-                        <br><button onclick="back(<?php echo $i ?>)" class="back<?php echo $i ?>">back</button>
+                        <br><button onclick="closeParticipate(<?php echo $i ?>)">Close</button>
                     </div>
 
                     <p>Created by: <?php echo $surveys[$i]['username']; ?></p>

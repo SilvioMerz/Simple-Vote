@@ -4,7 +4,7 @@ function showAnswers(surveyId) {
     $(".result" + surveyId).addClass("hide");
 }
 
-function back(surveyId) {
+function closeParticipate(surveyId) {
     $(".answers" + surveyId).addClass("hide");
     $(".participate" + surveyId).removeClass("hide");
     $(".result" + surveyId).removeClass("hide");
@@ -43,12 +43,7 @@ function showResult(surveyIndex, surveyId) {
             x.className = x.className.replace("show", "");
         }, 3000);
     } else {
-
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
+        xmlHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 document.getElementById("survey" + surveyIndex).innerHTML = this.responseText;
@@ -60,38 +55,20 @@ function showResult(surveyIndex, surveyId) {
 }
 
 function closeResult(surveyIndex, surveyId) {
-    if (window.XMLHttpRequest) {
-        xmlhttp = new XMLHttpRequest();
-    } else {
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
+    xmlHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             document.getElementById("survey" + surveyIndex).innerHTML = this.responseText;
         }
     };
-
     xmlhttp.open("GET", "includes/scripts/getQuestion.php?survey=" + surveyId, true);
     xmlhttp.send();
 }
 
-// function switchQuestionResult(surveyId, option, surveyCount) {
-//     const realSurveyId = surveyId - 1;
-//     if (window.XMLHttpRequest) {
-//         xmlhttp = new XMLHttpRequest();
-//     } else {
-//         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-//     }
-//     xmlhttp.onreadystatechange = function () {
-//         if (this.readyState === 4 && this.status === 200) {
-//             document.getElementById("survey" + realSurveyId).innerHTML = this.responseText;
-//         }
-//     };
-//
-//     if (option.toUpperCase() === 'QUESTION') {
-//         xmlhttp.open("GET", "includes/scripts/getQuestion.php?survey=" + surveyId, true);
-//     } else if (option.toUpperCase() === 'RESULT') {
-//         xmlhttp.open("GET", "includes/scripts/getResults.php?survey=" + surveyId, true);
-//     }
-//     xmlhttp.send();
-// }
+function xmlHttpRequest() {
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+}

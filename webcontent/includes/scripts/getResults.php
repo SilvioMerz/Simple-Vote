@@ -12,20 +12,18 @@ $width2 = 100 * round( $tempVotes['votesAnswer2'] / max(($tempVotes['votesAnswer
 ?>
 
 <style>
-    .poll1 {
+    .poll {
         background-color: #1a82ae;
         height: 20px;
-        width: <?=$width1?>%;
         overflow: visible;
         white-space: nowrap
     }
+    .poll1 {
+        width: <?=$width1?>%;
+    }
 
     .poll2 {
-        background-color: #1a82ae;
-        height: 20px;
         width: <?=$width2?>%;
-        overflow: visible;
-        white-space: nowrap;
     }
 </style>
 
@@ -38,7 +36,7 @@ $width2 = 100 * round( $tempVotes['votesAnswer2'] / max(($tempVotes['votesAnswer
     <tr>
         <td>Yes:</td>
         <td class="w-100">
-            <div class="poll1">
+            <div class="poll poll1">
                <span><?php echo $width1 ?>%</span>
             </div>
         </td>
@@ -46,7 +44,7 @@ $width2 = 100 * round( $tempVotes['votesAnswer2'] / max(($tempVotes['votesAnswer
     <tr>
         <td>No:</td>
         <td>
-            <div class="poll2">
+            <div class="poll poll2">
                 <span><?php echo $width2 ?>%</span>
             </div>
         </td>

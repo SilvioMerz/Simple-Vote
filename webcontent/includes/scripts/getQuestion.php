@@ -31,7 +31,7 @@ if (isset($result)) {
     <button onclick="vote(<?php echo $surveyId ?>, 1, '<?php echo $surveys[0]['question'] ?>')"><?php echo $split[0][0]; ?></button>
     <button onclick="vote(<?php echo $surveyId ?>, 2, '<?php echo $surveys[0]['question'] ?>')"><?php echo $split[0][1]; ?></button>
     <br>
-    <button onclick="back(<?php echo $realSurveyId ?>)" class="back<?php echo $realSurveyId ?>">back</button>
+    <button onclick="closeParticipate(<?php echo $realSurveyId ?>)">Close</button>
 </div>
 
 <p>Created by: <?php echo $surveys[0]['username']; ?></p>
