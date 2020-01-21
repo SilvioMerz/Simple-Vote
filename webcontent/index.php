@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once('includes/scripts/checkSession.php');
+
 $title = "Simple Vote";
 
 include_once('includes/scripts/database.php');
@@ -37,16 +38,22 @@ if (isset($result)) {
     <div class="row">
         <?php for ($i = 0; $i < count($surveys); $i++): ?>
             <div class="col-sm-4">
-                <div class="survey">
+                <div class="survey" id="survey<?php echo $i ?>">
                     <h3><?php echo $surveys[$i]['question']; ?></h3>
                     <p><?php echo $surveys[$i]['description']; ?></p><br>
 
-                    <button class="participate"><strong>Participate</strong></button>
+                    <button onclick="showAnswers(<?php echo $i ?>)" class="participate<?php echo $i ?>">
+                        <strong>Participate</strong>
+                    </button>
+                    <button onclick="showResult(<?php echo $i ?>, <?php echo $i + 1 ?>)" class="result<?php echo $i ?>">
+                        <strong>Show result</strong>
+                    </button>
 
-                    <div class="answers hide">
-                        <button><?php echo $split[$i][0]; ?></button>
-                        <button><?php echo $split[$i][1]; ?></button>
-                        <br><button class="back">back</button>
+                    <div class="answers<?php echo $i ?> hide">
+                        <button onclick="vote(<?php echo $i + 1 ?>, 1, '<?php echo $surveys[$i]['question'] ?>')"><?php echo $split[$i][0]; ?></button>
+                        <button onclick="vote(<?php echo $i + 1 ?>, 2, '<?php echo $surveys[$i]['question'] ?>')"><?php echo $split[$i][1]; ?></button>
+                        <br>
+                        <button onclick="closeParticipate(<?php echo $i ?>)">Close</button>
                     </div>
 
                     <p>Created by: <?php echo $surveys[$i]['username']; ?></p>
@@ -55,6 +62,7 @@ if (isset($result)) {
         <?php endfor; ?>
     </div>
 </div>
+<div id="toastr"></div>
 <?php include_once('includes/footer.html'); ?>
 </body>
 </html>
