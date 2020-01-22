@@ -7,7 +7,7 @@ h1 {
 
 img {
     float: right;
-    padding-right: 1em;
+    padding: 0 1em 0 1em;
 }
 
 header {
