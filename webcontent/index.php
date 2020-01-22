@@ -27,6 +27,7 @@ if (isset($result)) {
     <?php include_once('includes/dependencies.html'); ?>
     <?php include_once('includes/head.html'); ?>
     <link rel="stylesheet" type="text/css" href="../styles/index.css">
+    <link rel="stylesheet" type="text/css" href="../styles/toastr.css">
     <script src="includes/scripts/participate.js"></script>
 </head>
 <body>

@@ -8,7 +8,7 @@ $result = mysqli_query($db, $getShownSurveysQuery);
 $survey = mysqli_fetch_assoc($result);
 
 
-$getAllSurveysQuery = "SELECT s.question, s.description, s.answers, u.username FROM `surveys` AS s INNER JOIN users AS u ON s.fkuser=u.idusers";
+$getAllSurveysQuery = "SELECT s.question, s.description, s.answers, u.username FROM `surveys` AS s INNER JOIN users AS u ON s.fkuser=u.idusers ORDER BY s.idsurveys";
 $resultAll = mysqli_query($db, $getAllSurveysQuery);
 ?>
 
