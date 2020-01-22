@@ -42,37 +42,26 @@ function xmlHttpRequest() {
 }
 
 function showResult(surveyIndex, surveyId, surveyCount) {
-    const openedResults = $('div.poll1').length;
     xmlHttpRequest();
-    if (openedResults > 0) {
-        for (let i = 0; i < surveyCount; i++) {
-            if (i !== surveyIndex) {
-                let surveyIdToClose = i + 1;
-                xmlhttp.onreadystatechange = function () {
-                    if (this.readyState === 4 && this.status === 200) {
-                        document.getElementById("survey" + i).innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("GET", "includes/scripts/getQuestion.php?survey=" + surveyIdToClose, false);
-                xmlhttp.send();
-            } else {
-                xmlhttp.onreadystatechange = function () {
-                    if (this.readyState === 4 && this.status === 200) {
-                        document.getElementById("survey" + surveyIndex).innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("GET", "includes/scripts/getResult.php?survey=" + surveyId, false);
-                xmlhttp.send();
-            }
+    for (let i = 0; i < surveyCount; i++) {
+        if (i !== surveyIndex) {
+            let surveyIdToClose = i + 1;
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    document.getElementById("survey" + i).innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "includes/scripts/getQuestion.php?survey=" + surveyIdToClose, false);
+            xmlhttp.send();
+        } else {
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    document.getElementById("survey" + surveyIndex).innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "includes/scripts/getResult.php?survey=" + surveyId, false);
+            xmlhttp.send();
         }
-    } else {
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState === 4 && this.status === 200) {
-                document.getElementById("survey" + surveyIndex).innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET", "includes/scripts/getResult.php?survey=" + surveyId, true);
-        xmlhttp.send();
     }
 }
 
