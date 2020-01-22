@@ -206,6 +206,7 @@
 
 .footer {
     background: #000;
+    height: 600px;
 }
 
 .footer .footer_area {
@@ -255,7 +256,7 @@
     color: #FFFFFF;
     margin-top: 15px;
     margin-bottom: 58px;
-    padding-left: 260px;
+    padding-left: 400px;
 }
 
 .footer .footer_bottom {
@@ -360,7 +361,7 @@
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     margin-bottom: 0;
-    padding-left: 190px;
+    padding-left: 300px;
 }
 
 .footer .footer_bottom .copyright_text p a {
