@@ -8,7 +8,7 @@ include_once('includes/scripts/database.php');
 
 $surveys = [];
 $split = [];
-$getAllSurveysQuery = "SELECT s.question, s.description, s.answers, u.username FROM `surveys` AS s INNER JOIN users AS u ON s.fkuser=u.idusers";
+$getAllSurveysQuery = "SELECT s.question, s.description, s.answers, u.username FROM surveys AS s INNER JOIN users AS u ON s.fkuser=u.idusers ORDER BY s.idsurveys";
 $result = mysqli_query($db, $getAllSurveysQuery);
 if (isset($result)) {
     while ($row = mysqli_fetch_assoc($result)) {

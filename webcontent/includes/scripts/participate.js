@@ -44,7 +44,15 @@ function xmlHttpRequest() {
 function showResult(surveyIndex, surveyId, surveyCount) {
     xmlHttpRequest();
     for (let i = 0; i < surveyCount; i++) {
-        if (i !== surveyIndex) {
+        if (i === surveyIndex) {
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    document.getElementById("survey" + surveyIndex).innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "includes/scripts/getResult.php?survey=" + surveyId, false);
+            xmlhttp.send();
+        } else {
             let surveyIdToClose = i + 1;
             xmlhttp.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
@@ -52,14 +60,6 @@ function showResult(surveyIndex, surveyId, surveyCount) {
                 }
             };
             xmlhttp.open("GET", "includes/scripts/getQuestion.php?survey=" + surveyIdToClose, false);
-            xmlhttp.send();
-        } else {
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState === 4 && this.status === 200) {
-                    document.getElementById("survey" + surveyIndex).innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "includes/scripts/getResult.php?survey=" + surveyId, false);
             xmlhttp.send();
         }
     }
