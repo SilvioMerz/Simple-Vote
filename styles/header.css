@@ -1,19 +1,22 @@
 h1 {
-    font-family: "Arial Black";
+    font-family: "Arial Black", sans-serif;
     color: #1a82ae;
-    padding-left: 180px;
-}
-
-p {
-    text-align: left;
+    display: inline-block;
+    padding: 1em;
 }
 
 img {
-    alignment: left;
-    padding-top: 50px;
+    float: right;
+    padding-right: 1em;
 }
 
-.jumbotron {
+header {
     background-color: white;
-    height: 30px;
+    height: 10em;
+}
+
+#content-middle-of-height {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
