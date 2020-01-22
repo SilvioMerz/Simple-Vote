@@ -45,7 +45,7 @@ if (isset($result)) {
                     <button onclick="showAnswers(<?php echo $i ?>)" class="participate<?php echo $i ?>">
                         <strong>Participate</strong>
                     </button>
-                    <button onclick="showResult(<?php echo $i ?>, <?php echo $i + 1 ?>)" class="result<?php echo $i ?>">
+                    <button onclick="showResult(<?php echo $i ?>, <?php echo $i + 1 ?>, <?php echo count($surveys) ?>)" class="result<?php echo $i ?>">
                         <strong>Show result</strong>
                     </button>
 

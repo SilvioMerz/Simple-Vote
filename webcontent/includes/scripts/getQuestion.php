@@ -3,9 +3,13 @@ include_once('database.php');
 
 $surveyId = $_REQUEST['survey'];
 $surveyIndex = $surveyId - 1;
-$getAllSurveysQuery = "SELECT s.question, s.description, s.answers, u.username FROM `surveys` AS s INNER JOIN users AS u ON s.fkuser=u.idusers WHERE s.idsurveys = $surveyId";
-$result = mysqli_query($db, $getAllSurveysQuery);
+$getShownSurveysQuery = "SELECT s.question, s.description, s.answers, u.username FROM `surveys` AS s INNER JOIN users AS u ON s.fkuser=u.idusers WHERE s.idsurveys = $surveyId";
+$result = mysqli_query($db, $getShownSurveysQuery);
 $survey = mysqli_fetch_assoc($result);
+
+
+$getAllSurveysQuery = "SELECT s.question, s.description, s.answers, u.username FROM `surveys` AS s INNER JOIN users AS u ON s.fkuser=u.idusers";
+$resultAll = mysqli_query($db, $getAllSurveysQuery);
 ?>
 
 <h3><?php echo $survey['question']; ?></h3>
@@ -17,7 +21,7 @@ $survey = mysqli_fetch_assoc($result);
 </button>
 
 <button class="result<?php echo $surveyIndex ?>"
-        onclick="showResult(<?php echo $surveyIndex ?>, <?php echo $surveyId ?>)">
+        onclick="showResult(<?php echo $surveyIndex ?>, <?php echo $surveyId ?>, <?php echo mysqli_num_rows($resultAll) ?>)">
     <strong>Show result</strong>
 </button>
 

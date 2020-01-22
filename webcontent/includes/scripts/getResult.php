@@ -5,10 +5,14 @@ $surveyId = $_REQUEST['survey'];
 
 $getVotes = "SELECT votesAnswer1, votesAnswer2 FROM votes WHERE fksurveys = $surveyId";
 $result = mysqli_query($db, $getVotes);
-$tempVotes = mysqli_fetch_assoc($result);
+$votes = mysqli_fetch_assoc($result);
 
-$width1 = 100 * round($tempVotes['votesAnswer1'] / max(($tempVotes['votesAnswer2'] + $tempVotes['votesAnswer1']), 1), 2);
-$width2 = 100 * round( $tempVotes['votesAnswer2'] / max(($tempVotes['votesAnswer2'] + $tempVotes['votesAnswer1']), 1), 2);
+$getSurveyQuery = "SELECT answers FROM `surveys` WHERE idsurveys = $surveyId";
+$surveyResult = mysqli_query($db, $getSurveyQuery);
+$survey = mysqli_fetch_assoc($surveyResult);
+
+$width1 = 100 * round($votes['votesAnswer1'] / max(($votes['votesAnswer2'] + $votes['votesAnswer1']), 1), 2);
+$width2 = 100 * round( $votes['votesAnswer2'] / max(($votes['votesAnswer2'] + $votes['votesAnswer1']), 1), 2);
 ?>
 
 <style>
@@ -38,7 +42,7 @@ $width2 = 100 * round( $tempVotes['votesAnswer2'] / max(($tempVotes['votesAnswer
 <h4>Result:</h4>
 <table id="result-table">
     <tr>
-        <td>Yes:</td>
+        <td><?php echo explode(";", $survey['answers'])[0]; ?>: </td>
         <td class="w-100">
             <div class="poll poll1">
                <span>&nbsp; <?php echo $width1 ?>%</span>
@@ -46,7 +50,7 @@ $width2 = 100 * round( $tempVotes['votesAnswer2'] / max(($tempVotes['votesAnswer
         </td>
     </tr>
     <tr>
-        <td>No:</td>
+        <td><?php echo explode(";", $survey['answers'])[1]; ?>: </td>
         <td>
             <div class="poll poll2">
                 <span>&nbsp; <?php echo $width2 ?>%</span>
@@ -55,4 +59,4 @@ $width2 = 100 * round( $tempVotes['votesAnswer2'] / max(($tempVotes['votesAnswer
     </tr>
 </table>
 <button onclick="closeResult(<?php echo $surveyId - 1?>, <?php echo $surveyId ?>)">Close</button>
-<p><?php echo $tempVotes['votesAnswer1'] + $tempVotes['votesAnswer2'] ?> People have voted for this question</p>
+<p><?php echo $votes['votesAnswer1'] + $votes['votesAnswer2'] ?> People have voted for this question</p>
