@@ -46,13 +46,6 @@
 /*    color:  inherit;*/
 /*}*/
 
-/*.footer-distributed .footer-company-name{*/
-/*    color:  #8f9296;*/
-/*    font-size: 14px;*/
-/*    font-weight: normal;*/
-/*    margin: 0;*/
-/*}*/
-
 /*!* Footer social icons *!*/
 
 /*.footer-distributed .footer-icons{*/
@@ -256,7 +249,7 @@
     color: #FFFFFF;
     margin-top: 15px;
     margin-bottom: 58px;
-    padding-left: 400px;
+    padding-left: 600px;
 }
 
 .footer .footer_bottom {
@@ -361,7 +354,7 @@
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     margin-bottom: 0;
-    padding-left: 300px;
+    padding-left: 400px !important;
 }
 
 .footer .footer_bottom .copyright_text p a {
