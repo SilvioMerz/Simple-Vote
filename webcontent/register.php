@@ -2,6 +2,8 @@
 
 include_once('includes/scripts/database.php');
 
+$title = "Simple Vote";
+
 $errors = array();
 $insertUser = $db->prepare("INSERT INTO users (username, email, password) VALUES ((?), (?), (?))");
 
@@ -64,10 +66,9 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+<?php include_once('includes/header.php'); ?>
+
 <div class="container">
-    <div class="header">
-        <h1><a href="index.php">Simple Vote</a></h1>
-    </div>
 
     <div class="allItems">
     <div class="sign">
