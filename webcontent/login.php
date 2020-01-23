@@ -46,8 +46,11 @@ if (isset($_POST["submit"])) {
 
 <body>
 <div class="container">
-    <h1><a href="index.php">Simple Vote</a></h1>
+    <div class="header">
+        <h1><a href="index.php">Simple Vote</a></h1>
+    </div>
 
+    <div class="allItems">
     <div class="sign">
         <h2>Sign in</h2>
     </div>
@@ -59,7 +62,7 @@ if (isset($_POST["submit"])) {
             <?php endforeach ?>
         </div>
     <?php endif ?>
-
+    
     <form method="post" action="login.php">
         <div class="center-screen">
             <input type="text" class="form-control w-50" name="username" placeholder="Username"
@@ -73,6 +76,7 @@ if (isset($_POST["submit"])) {
             <button type="submit" name="submit" class="btn btn-sm btn-outline-primary">Sign in</button>
         </div>
     </form>
+    </div>
 </div>
 </body>
 </html>

@@ -4,6 +4,7 @@ div input {
 
 .sign {
     text-align: center;
+    margin-top: 50px;
 }
 
 .center-screen {
@@ -13,4 +14,26 @@ div input {
     align-items: center;
     text-align: center;
     min-height: 50vh;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.allItems{
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+h1 {
+    font-family: "Arial Black", sans-serif;
+    color: #1a82ae;
+    display: inline-block;
+    padding: 1em;
 }
