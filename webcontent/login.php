@@ -1,6 +1,8 @@
 <?php
 include_once('includes/scripts/database.php');
 
+$title = "Simple Vote";
+
 $errors = array();
 $loginCredentials = $db->prepare("SELECT idusers, email FROM users WHERE username = (?) AND password = (?)");
 
@@ -45,10 +47,10 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
+<?php include_once('includes/header.php'); ?>
+
 <div class="container">
-    <div class="header">
-        <h1><a href="index.php">Simple Vote</a></h1>
-    </div>
+
 
     <div class="allItems">
     <div class="sign">
