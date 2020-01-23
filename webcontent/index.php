@@ -37,6 +37,9 @@ if (isset($result)) {
 
 <div class="container" style="margin-top:30px">
     <div class="row">
+        <?php if (count($surveys) === 0) : ?>
+            <h3 id="no-surveys">No surveys available</h3>
+        <?php endif; ?>
         <?php for ($i = 0; $i < count($surveys); $i++): ?>
             <div class="col-sm-4">
                 <div class="survey" id="survey<?php echo $i ?>">
@@ -46,7 +49,8 @@ if (isset($result)) {
                     <button onclick="showAnswers(<?php echo $i ?>)" class="participate<?php echo $i ?>">
                         <strong>Participate</strong>
                     </button>
-                    <button onclick="showResult(<?php echo $i ?>, <?php echo $i + 1 ?>, <?php echo count($surveys) ?>)" class="result<?php echo $i ?>">
+                    <button onclick="showResult(<?php echo $i ?>, <?php echo $i + 1 ?>, <?php echo count($surveys) ?>)"
+                            class="result<?php echo $i ?>">
                         <strong>Show result</strong>
                     </button>
 
@@ -61,6 +65,7 @@ if (isset($result)) {
                 </div>
             </div>
         <?php endfor; ?>
+
     </div>
 </div>
 <div id="toastr"></div>
