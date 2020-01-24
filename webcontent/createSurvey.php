@@ -89,6 +89,6 @@ if (isset($_POST["submitCreateSurvey"])) {
     </div>
 </div>
 
-<?php include_once('includes/footer.html'); ?>
+<?php //include_once('includes/footer.php'); ?>
 </body>
 </html>
