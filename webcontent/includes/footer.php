@@ -5,8 +5,8 @@
             <ul>
                 <li><a href="../webcontent/index.php">home</a></li>
                 <?php if (!isset($_SESSION['USER']['SUCCESS'])) : ?>
-                    <li><a href="../webcontent/login.php">Login</a></li>
                     <li><a href="../webcontent/register.php">Register</a></li>
+                    <li><a href="../webcontent/login.php">Login</a></li>
                 <?php endif; ?>
 
                 <?php if (isset($_SESSION['USER']['SUCCESS'])) : ?>
